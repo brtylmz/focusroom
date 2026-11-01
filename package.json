@@ -1,0 +1,37 @@
+{
+  "name": "focusroom",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Tarayıcıda çalışan, çok kullanıcılı 3D birlikte çalışma odası",
+  "type": "module",
+  "workspaces": [
+    "shared",
+    "server",
+    "client"
+  ],
+  "engines": {
+    "node": ">=20.12"
+  },
+  "scripts": {
+    "dev": "concurrently -n server,client -c blue,green \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "npm run dev -w @focusroom/server",
+    "dev:client": "npm run assets && npm run dev -w @focusroom/client",
+    "build": "npm run assets && npm run typecheck && npm run build -w @focusroom/client",
+    "start": "npm run assets && npm run build -w @focusroom/client && npm run start -w @focusroom/server",
+    "assets": "node scripts/sync-assets.mjs",
+    "typecheck": "npm run typecheck -w @focusroom/shared && npm run typecheck -w @focusroom/server && npm run typecheck -w @focusroom/client",
+    "test": "vitest run",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "concurrently": "^9.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-prettier": "^10.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.6.0",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^3.2.0"
+  }
+}

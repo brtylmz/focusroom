@@ -1,0 +1,21 @@
+{
+  "name": "@focusroom/client",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "start": "vite preview",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@focusroom/shared": "*",
+    "socket.io-client": "^4.8.1",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.187.0",
+    "vite": "^6.4.5"
+  }
+}
