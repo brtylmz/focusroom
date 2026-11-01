@@ -1,0 +1,6 @@
+**/node_modules
+**/dist
+client/public/models
+.git
+*.log
+.DS_Store
