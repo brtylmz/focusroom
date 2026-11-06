@@ -537,6 +537,10 @@ label.field {
   text-align: center;
 }
 
+.badge[hidden] {
+  display: none;
+}
+
 .timer-display {
   font-size: clamp(2.6rem, 6vw, 3.6rem);
   font-weight: 700;
@@ -641,6 +645,11 @@ label.field {
   font-variant-numeric: tabular-nums;
 }
 
+.board-scroll {
+  max-height: 260px;
+  overflow: auto;
+}
+
 .board-table th,
 .board-table td {
   padding: 0.35rem 0.3rem;
@@ -671,6 +680,13 @@ label.field {
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.board-name > span:last-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .board-person {
@@ -910,11 +926,86 @@ label.field {
 
 @media (max-width: 720px) {
   .dock-board {
-    top: auto;
-    bottom: 12px;
+    top: 84px;
+    bottom: auto;
     left: 12px;
-    width: min(220px, 40vw);
-    max-height: 30vh;
+    width: min(360px, calc(100vw - 24px));
+    max-height: 35vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .dock-board .board-scroll {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .board-table,
+  .board-table tbody {
+    display: block;
+  }
+
+  .board-table thead {
+    display: none;
+  }
+
+  .board-table tbody {
+    display: grid;
+    gap: 0.3rem;
+  }
+
+  .board-table tr {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.25rem 0.45rem;
+    padding: 0.35rem 0.2rem;
+    border-bottom: 1px solid var(--panel-border);
+    border-radius: 6px;
+    white-space: normal;
+  }
+
+  .board-table td {
+    min-width: 0;
+    padding: 0.1rem 0.15rem;
+    border: 0;
+    white-space: normal;
+    font-size: 0.75rem;
+  }
+
+  .board-table td:first-child,
+  .board-table td[colspan] {
+    grid-column: 1 / -1;
+  }
+
+  .board-table td:nth-child(n + 2) {
+    display: grid;
+    gap: 0.1rem;
+  }
+
+  .board-table td:nth-child(n + 2)::before {
+    content: attr(data-label);
+    color: var(--muted);
+    font-size: 0.65rem;
+  }
+
+  .board-table td[colspan] {
+    display: block;
+  }
+
+  .board-person,
+  .board-name {
+    min-width: 0;
+  }
+
+  .board-name {
+    max-width: none;
+    flex: 1;
+  }
+
+  .board-mute {
+    font-size: 0.72rem;
+    padding: 0.2rem 0.35rem;
+    white-space: nowrap;
   }
 
   .dock-right {

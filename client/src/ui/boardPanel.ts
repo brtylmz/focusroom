@@ -47,7 +47,7 @@ export class BoardPanel {
     const body = el('div', { class: 'collapsible-body' }, [
       this.total,
       el('div', { class: 'row-buttons' }, [this.sortButtons.study, this.sortButtons.name]),
-      el('div', { class: 'board-scroll', attrs: { style: 'overflow:auto;max-height:260px' } }, [table]),
+      el('div', { class: 'board-scroll' }, [table]),
     ]);
     const header = el('div', { class: 'collapsible-head' }, [
       el('h2', { text: tr.board.heading }),
@@ -140,9 +140,9 @@ export class BoardPanel {
     }
     return el('tr', { class: cls }, [
       el('td', {}, [el('div', { class: 'board-person' }, personContent)]),
-      el('td', { text: tr.board.minutes(row.visitMinutes) }),
-      el('td', { text: tr.board.minutes(row.todayMinutes) }),
-      el('td', {}, [pill]),
+      el('td', { attrs: { 'data-label': tr.board.colVisit }, text: tr.board.minutes(row.visitMinutes) }),
+      el('td', { attrs: { 'data-label': tr.board.colToday }, text: tr.board.minutes(row.todayMinutes) }),
+      el('td', { attrs: { 'data-label': tr.board.colStatus } }, [pill]),
     ]);
   }
 
