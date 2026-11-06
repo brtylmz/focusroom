@@ -10,7 +10,6 @@ export function enclosedHeight(id: EnvironmentId): number | null {
   return ENCLOSED[id] ? WALL_HEIGHT[id] : null;
 }
 
-const WALL_HEIGHT: Record<EnvironmentId, number> = { library: 2.6, cafe: 1.3, office: 1.3, park: 0.45 };
 const ENCLOSED: Partial<Record<EnvironmentId, true>> = { library: true };
 const WALL_HEIGHT: Record<EnvironmentId, number> = { library: 1.3, cafe: 1.3, office: 2.4, park: 0.45 };
 const MAX_POINT_LIGHTS = 4;
