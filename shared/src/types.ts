@@ -54,8 +54,6 @@ export interface DecorDef {
   tint?: string;
   /** Unrotated footprint; becomes a collision box when present. */
   box?: { w: number; d: number };
-  /** Uniform model scale. Defaults to 1. */
-  scale?: number;
 }
 
 export interface BoxDef {
