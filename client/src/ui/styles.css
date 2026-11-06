@@ -491,7 +491,21 @@ label.field {
 .dock-right {
   right: 12px;
   bottom: 12px;
-  overflow-y: auto;
+  max-height: none;
+  gap: 0.4rem;
+  overflow: visible;
+}
+
+.dock-right > .panel {
+  padding: 0.75rem;
+}
+
+.dock-right .collapsible-body {
+  gap: 0.4rem;
+}
+
+.dock-right .timer-display {
+  font-size: 2.35rem;
 }
 
 .dock-board {
@@ -563,8 +577,8 @@ label.field {
 
 .chat-log {
   flex: 1;
-  min-height: 160px;
-  max-height: 340px;
+  min-height: 90px;
+  max-height: 190px;
   overflow-y: auto;
   display: grid;
   gap: 0.45rem;
@@ -626,8 +640,8 @@ label.field {
 }
 
 .chat-form textarea {
-  min-height: 3.2rem;
-  max-height: 8rem;
+  min-height: 2.6rem;
+  max-height: 5rem;
   resize: vertical;
   line-height: 1.35;
 }
@@ -935,6 +949,18 @@ label.field {
     overflow-y: auto;
   }
 
+  .dock-board > .collapsible-head {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding-block: 0.35rem;
+    background: var(--panel-solid);
+  }
+
+  .dock-board > .collapsible-head button {
+    flex: none;
+  }
+
   .dock-board .board-scroll {
     max-height: none;
     overflow: visible;
@@ -1005,22 +1031,68 @@ label.field {
   .board-mute {
     font-size: 0.72rem;
     padding: 0.2rem 0.35rem;
+    max-width: 7rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
     white-space: nowrap;
   }
 
   .dock-right {
-    width: min(240px, 56vw);
-    max-height: 50vh;
+    width: min(320px, calc(100vw - 24px));
   }
 
   .dock-right .chat-log {
     flex: none;
-    min-height: 0;
-    max-height: none;
-    overflow-y: visible;
+    min-height: 70px;
+    max-height: 130px;
+    overflow-y: auto;
   }
 
   .room-title {
     min-width: 0;
+  }
+}
+
+@media (max-height: 800px) {
+  .dock-right .timer-display {
+    font-size: 2rem;
+  }
+
+  .dock-right .chat-log {
+    min-height: 70px;
+    max-height: 140px;
+  }
+}
+
+@media (max-height: 650px) {
+  .dock-right > .panel {
+    padding: 0.55rem;
+  }
+
+  .dock-right .timer-display {
+    font-size: 1.65rem;
+  }
+
+  .dock-right .timer-phase,
+  .dock-right .hint {
+    font-size: 0.75rem;
+  }
+
+  .dock-right .row-buttons {
+    gap: 0.25rem;
+  }
+
+  .dock-right .row-buttons button {
+    padding: 0.3rem 0.55rem;
+  }
+
+  .dock-right .chat-log {
+    min-height: 55px;
+    max-height: 95px;
+  }
+
+  .dock-right .chat-form textarea {
+    min-height: 2.2rem;
+    max-height: 3.5rem;
   }
 }
