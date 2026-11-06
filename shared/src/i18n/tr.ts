@@ -36,7 +36,7 @@ export const tr = {
     sessionReplaced: 'Bu oturum başka bir sekmede açıldı.',
     joinFailed: 'Odaya girilemedi.',
     kicked: 'Odadan çıkarıldınız.',
-    walkHint: 'WASD / ok tuşları ile yürüyün, fare ile kamerayı döndürün.',
+    walkHint: 'WASD / ok tuşları ile yürüyün, fare ile kamerayı döndürün. Fareyi serbest bırakmak için sağ tıklayın.',
     touchHint: 'Sol alttaki joystick ile yürüyün; zemine dokunarak gidin.',
     firstPerson: 'Birinci şahıs (V)',
     thirdPerson: 'Üçüncü şahıs (V)',

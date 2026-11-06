@@ -8,8 +8,11 @@ const envDir = join(root, 'shared', 'src', 'environments');
 const characterSource = join(root, 'assets', 'models', 'characters');
 const CHARACTERS = Array.from({ length: 18 }, (_, i) => `character-${String.fromCharCode(97 + i)}`);
 
+// Models loaded by code rather than referenced from environment JSON.
+const CODE_FURNITURE = ['lightCeiling'];
+
 function collectFurnitureModels() {
-  const names = new Set();
+  const names = new Set(CODE_FURNITURE);
   for (const file of readdirSync(envDir).filter((f) => f.endsWith('.json'))) {
     const data = JSON.parse(readFileSync(join(envDir, file), 'utf8'));
     for (const d of data.decor ?? []) names.add(d.model);

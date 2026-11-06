@@ -1,6 +1,8 @@
 import * as THREE from 'three';
+import type { BoundsDef } from '@focusroom/shared';
 
 const EYE_HEIGHT = 0.7;
+const WALL_MARGIN = 0.15;
 
 /** Third-person orbit camera. The default yaw places the camera behind an avatar that faces +Z. */
 export class CameraRig {
@@ -13,6 +15,7 @@ export class CameraRig {
   private readonly look = new THREE.Vector3();
   private readonly desired = new THREE.Vector3();
   private initialised = false;
+  private enclosure: { bounds: BoundsDef; ceiling: number } | null = null;
 
   constructor(aspect: number) {
     this.camera = new THREE.PerspectiveCamera(55, aspect, 0.1, 200);
@@ -37,6 +40,11 @@ export class CameraRig {
     this.distance = clamp(this.distance + delta * 0.003, 1.6, 7);
   }
 
+  /** Keeps the third-person camera inside the room; pass null for open rooms. */
+  setEnclosure(bounds: BoundsDef, ceiling: number | null): void {
+    this.enclosure = ceiling === null ? null : { bounds, ceiling };
+  }
+
   update(dt: number, focus: THREE.Vector3Like, smooth: boolean): void {
     if (this.firstPerson) {
       this.updateFirstPerson(focus);
@@ -54,6 +62,7 @@ export class CameraRig {
       this.look.y + vertical,
       this.look.z + Math.cos(this.yaw) * horizontal,
     );
+    if (this.enclosure) keepInside(this.desired, this.enclosure);
     this.camera.position.lerp(this.desired, k);
     this.camera.lookAt(this.look);
   }
@@ -78,4 +87,10 @@ export class CameraRig {
 
 function clamp(v: number, min: number, max: number): number {
   return Math.min(max, Math.max(min, v));
+}
+
+function keepInside(p: THREE.Vector3, { bounds, ceiling }: { bounds: BoundsDef; ceiling: number }): void {
+  p.x = clamp(p.x, bounds.minX + WALL_MARGIN, bounds.maxX - WALL_MARGIN);
+  p.z = clamp(p.z, bounds.minZ + WALL_MARGIN, bounds.maxZ - WALL_MARGIN);
+  p.y = Math.min(p.y, ceiling - WALL_MARGIN);
 }

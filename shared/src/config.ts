@@ -1,8 +1,8 @@
 export const WORLD = {
-  /** Units per second. One unit is roughly two metres. */
-  walkSpeed: 0.8,
+  /** Units per second. One unit is roughly two metres (about 1.4 m/s). */
+  walkSpeed: 2.0,
   /** Upper bound the server accepts for movement, before tolerance. */
-  maxSpeed: 1.2,
+  maxSpeed: 2.0,
   speedTolerance: 0.25,
   playerRadius: 0.25,
   /** Client-side reach for pressing E or auto-sitting. */
