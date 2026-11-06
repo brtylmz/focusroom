@@ -51,8 +51,8 @@ export class Avatar {
     this.anchor.add(this.nameplate);
 
     this.bubbleEl = el('div', { class: 'bubble' });
-    this.bubbleEl.style.display = 'none';
     this.bubble = new CSS2DObject(this.bubbleEl);
+    this.bubble.visible = false;
     this.bubble.position.set(0, AVATAR_HEIGHT + 0.5, 0);
     this.anchor.add(this.bubble);
 
@@ -107,8 +107,15 @@ export class Avatar {
   }
 
   showBubble(text: string, durationMs: number): void {
-    this.bubbleEl.textContent = text;
-    this.bubbleEl.style.display = '';
+    const content = text.trim();
+    if (!content || durationMs <= 0) {
+      this.bubbleEl.textContent = '';
+      this.bubble.visible = false;
+      this.bubbleLeft = 0;
+      return;
+    }
+    this.bubbleEl.textContent = content;
+    this.bubble.visible = true;
     this.bubbleLeft = durationMs;
   }
 
@@ -122,7 +129,11 @@ export class Avatar {
     this.mixer.update(dt);
     if (this.bubbleLeft > 0) {
       this.bubbleLeft -= dt * 1000;
-      if (this.bubbleLeft <= 0) this.bubbleEl.style.display = 'none';
+      if (this.bubbleLeft <= 0) {
+        this.bubble.visible = false;
+        this.bubbleLeft = 0;
+        this.bubbleEl.textContent = '';
+      }
     }
   }
 
