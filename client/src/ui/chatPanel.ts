@@ -127,7 +127,7 @@ export class ChatPanel {
       const cls = m.tone === 'milestone' ? 'chat-msg system milestone' : 'chat-msg system';
       return el('div', { class: cls, text: m.text });
     }
-    if (m.authorId && m.authorId !== this.selfId && this.mutes.has(m.authorId)) return null;
+    const muted = Boolean(m.authorId && m.authorId !== this.selfId && this.mutes.has(m.authorId));
     const time = new Date(m.sentAt).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
     const swatch = el('span', { class: 'swatch' });
     const accent = m.characterId ? ACCENT.get(m.characterId) : undefined;
@@ -146,7 +146,7 @@ export class ChatPanel {
         el('span', { text: time }),
         actions,
       ]),
-      el('div', { text: m.text }),
+      el('div', { text: muted ? tr.chat.muted : m.text }),
     ]);
   }
 

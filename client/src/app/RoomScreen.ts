@@ -520,6 +520,7 @@ export class RoomScreen {
 
     if (this.keyboard.wasPressed('KeyE')) this.toggleSeat();
     if (this.keyboard.wasPressed('KeyV')) this.toggleView();
+    if (this.keyboard.wasPressed('Tab')) this.chat.focusInput();
     if (this.keyboard.wasPressed('Enter')) this.chat.focusInput();
 
     controller.update(dt, this.keyboard.axis(), this.rig.yaw);
