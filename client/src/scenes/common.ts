@@ -260,8 +260,8 @@ function buildProcedural(kind: string, decor: DecorDef, quality: Quality): THREE
 
   switch (kind) {
     case 'counter': {
-      add(new THREE.BoxGeometry(w, 1.0, d), tint ?? '#8c929a', 0, 0.5, 0);
-      add(new THREE.BoxGeometry(w + 0.06, 0.05, d + 0.06), '#2b2f36', 0, 1.025, 0);
+      add(new THREE.BoxGeometry(w, 0.82, d), tint ?? '#8c929a', 0, 0.41, 0);
+      add(new THREE.BoxGeometry(w + 0.06, 0.05, d + 0.06), '#2b2f36', 0, 0.845, 0);
       break;
     }
     case 'panel':

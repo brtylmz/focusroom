@@ -22,7 +22,7 @@
     "ambientIntensity": 0.9,
     "sun": "#fff1dc",
     "sunIntensity": 1,
-    "ground": "#4f545c",
+    "ground": "#403f43",
     "wall": "#e6e9ee",
     "accent": "#4f7cac"
   },
@@ -30,9 +30,9 @@
     {
       "id": "a1-n",
       "pozisyon": {
-        "x": -5.6,
+        "x": 0,
         "y": 0.23,
-        "z": -4
+        "z": -3.33
       },
       "yön": 0,
       "tür": "sandalye",
@@ -43,9 +43,9 @@
     {
       "id": "a1-s",
       "pozisyon": {
-        "x": -5.6,
+        "x": 0,
         "y": 0.23,
-        "z": -2.4000000000000004
+        "z": -1.9699999999999998
       },
       "yön": 180,
       "tür": "sandalye",
@@ -56,9 +56,9 @@
     {
       "id": "a2-n",
       "pozisyon": {
-        "x": -2.8,
+        "x": 1.45,
         "y": 0.23,
-        "z": -4
+        "z": -3.33
       },
       "yön": 0,
       "tür": "sandalye",
@@ -69,9 +69,9 @@
     {
       "id": "a2-s",
       "pozisyon": {
-        "x": -2.8,
+        "x": 1.45,
         "y": 0.23,
-        "z": -2.4000000000000004
+        "z": -1.9699999999999998
       },
       "yön": 180,
       "tür": "sandalye",
@@ -82,9 +82,9 @@
     {
       "id": "a3-n",
       "pozisyon": {
-        "x": 0,
+        "x": 2.9,
         "y": 0.23,
-        "z": -4
+        "z": -3.33
       },
       "yön": 0,
       "tür": "sandalye",
@@ -95,9 +95,9 @@
     {
       "id": "a3-s",
       "pozisyon": {
-        "x": 0,
+        "x": 2.9,
         "y": 0.23,
-        "z": -2.4000000000000004
+        "z": -1.9699999999999998
       },
       "yön": 180,
       "tür": "sandalye",
@@ -108,9 +108,9 @@
     {
       "id": "a4-n",
       "pozisyon": {
-        "x": 2.8,
+        "x": 4.35,
         "y": 0.23,
-        "z": -4
+        "z": -3.33
       },
       "yön": 0,
       "tür": "sandalye",
@@ -121,9 +121,9 @@
     {
       "id": "a4-s",
       "pozisyon": {
-        "x": 2.8,
+        "x": 4.35,
         "y": 0.23,
-        "z": -2.4000000000000004
+        "z": -1.9699999999999998
       },
       "yön": 180,
       "tür": "sandalye",
@@ -134,9 +134,9 @@
     {
       "id": "a5-n",
       "pozisyon": {
-        "x": 5.6,
+        "x": 5.8,
         "y": 0.23,
-        "z": -4
+        "z": -3.33
       },
       "yön": 0,
       "tür": "sandalye",
@@ -147,9 +147,9 @@
     {
       "id": "a5-s",
       "pozisyon": {
-        "x": 5.6,
+        "x": 5.8,
         "y": 0.23,
-        "z": -2.4000000000000004
+        "z": -1.9699999999999998
       },
       "yön": 180,
       "tür": "sandalye",
@@ -160,9 +160,9 @@
     {
       "id": "b1-n",
       "pozisyon": {
-        "x": -5.6,
+        "x": 0,
         "y": 0.23,
-        "z": 0.8
+        "z": 0.82
       },
       "yön": 0,
       "tür": "sandalye",
@@ -173,9 +173,9 @@
     {
       "id": "b1-s",
       "pozisyon": {
-        "x": -5.6,
+        "x": 0,
         "y": 0.23,
-        "z": 2.4000000000000004
+        "z": 2.18
       },
       "yön": 180,
       "tür": "sandalye",
@@ -186,9 +186,9 @@
     {
       "id": "b2-n",
       "pozisyon": {
-        "x": -2.8,
+        "x": 1.45,
         "y": 0.23,
-        "z": 0.8
+        "z": 0.82
       },
       "yön": 0,
       "tür": "sandalye",
@@ -199,9 +199,9 @@
     {
       "id": "b2-s",
       "pozisyon": {
-        "x": -2.8,
+        "x": 1.45,
         "y": 0.23,
-        "z": 2.4000000000000004
+        "z": 2.18
       },
       "yön": 180,
       "tür": "sandalye",
@@ -212,9 +212,9 @@
     {
       "id": "b3-n",
       "pozisyon": {
-        "x": 0,
+        "x": 2.9,
         "y": 0.23,
-        "z": 0.8
+        "z": 0.82
       },
       "yön": 0,
       "tür": "sandalye",
@@ -225,9 +225,9 @@
     {
       "id": "b3-s",
       "pozisyon": {
-        "x": 0,
+        "x": 2.9,
         "y": 0.23,
-        "z": 2.4000000000000004
+        "z": 2.18
       },
       "yön": 180,
       "tür": "sandalye",
@@ -238,9 +238,9 @@
     {
       "id": "b4-n",
       "pozisyon": {
-        "x": 2.8,
+        "x": 4.35,
         "y": 0.23,
-        "z": 0.8
+        "z": 0.82
       },
       "yön": 0,
       "tür": "sandalye",
@@ -251,9 +251,9 @@
     {
       "id": "b4-s",
       "pozisyon": {
-        "x": 2.8,
+        "x": 4.35,
         "y": 0.23,
-        "z": 2.4000000000000004
+        "z": 2.18
       },
       "yön": 180,
       "tür": "sandalye",
@@ -264,9 +264,9 @@
     {
       "id": "b5-n",
       "pozisyon": {
-        "x": 5.6,
+        "x": 5.8,
         "y": 0.23,
-        "z": 0.8
+        "z": 0.82
       },
       "yön": 0,
       "tür": "sandalye",
@@ -277,9 +277,9 @@
     {
       "id": "b5-s",
       "pozisyon": {
-        "x": 5.6,
+        "x": 5.8,
         "y": 0.23,
-        "z": 2.4000000000000004
+        "z": 2.18
       },
       "yön": 180,
       "tür": "sandalye",
@@ -330,145 +330,25 @@
       "yaw": 0,
       "tint": "#8c929a",
       "box": {
-        "w": 2.6,
-        "d": 0.8
+        "w": 2.25,
+        "d": 0.72
       }
     },
     {
       "model": "office/water-cooler",
-      "x": 5.6,
-      "z": -5.3,
+      "x": 5.15,
+      "z": -4.45,
       "yaw": 0,
-      "scale": 0.3,
+      "scale": 0.34,
       "box": {
-        "w": 0.27,
-        "d": 0.32
-      }
-    },
-    {
-      "model": "office/desk-drawer",
-      "x": -5.6,
-      "z": -3.2,
-      "yaw": 0,
-      "scale": 0.65,
-      "tint": "#a85d2a",
-      "box": {
-        "w": 0.9,
-        "d": 0.5
-      }
-    },
-    {
-      "model": "office/desk-drawer",
-      "x": -2.8,
-      "z": -3.2,
-      "yaw": 0,
-      "scale": 0.65,
-      "tint": "#a85d2a",
-      "box": {
-        "w": 0.9,
-        "d": 0.5
-      }
-    },
-    {
-      "model": "office/desk-drawer",
-      "x": 0,
-      "z": -3.2,
-      "yaw": 0,
-      "scale": 0.65,
-      "tint": "#a85d2a",
-      "box": {
-        "w": 0.9,
-        "d": 0.5
-      }
-    },
-    {
-      "model": "office/desk-drawer",
-      "x": 2.8,
-      "z": -3.2,
-      "yaw": 0,
-      "scale": 0.65,
-      "tint": "#a85d2a",
-      "box": {
-        "w": 0.9,
-        "d": 0.5
-      }
-    },
-    {
-      "model": "office/desk-drawer",
-      "x": 5.6,
-      "z": -3.2,
-      "yaw": 0,
-      "scale": 0.65,
-      "tint": "#a85d2a",
-      "box": {
-        "w": 0.9,
-        "d": 0.5
-      }
-    },
-    {
-      "model": "office/desk-drawer",
-      "x": -5.6,
-      "z": 1.6,
-      "yaw": 0,
-      "scale": 0.65,
-      "tint": "#a85d2a",
-      "box": {
-        "w": 0.9,
-        "d": 0.5
-      }
-    },
-    {
-      "model": "office/desk-drawer",
-      "x": -2.8,
-      "z": 1.6,
-      "yaw": 0,
-      "scale": 0.65,
-      "tint": "#a85d2a",
-      "box": {
-        "w": 0.9,
-        "d": 0.5
-      }
-    },
-    {
-      "model": "office/desk-drawer",
-      "x": 0,
-      "z": 1.6,
-      "yaw": 0,
-      "scale": 0.65,
-      "tint": "#a85d2a",
-      "box": {
-        "w": 0.9,
-        "d": 0.5
-      }
-    },
-    {
-      "model": "office/desk-drawer",
-      "x": 2.8,
-      "z": 1.6,
-      "yaw": 0,
-      "scale": 0.65,
-      "tint": "#a85d2a",
-      "box": {
-        "w": 0.9,
-        "d": 0.5
-      }
-    },
-    {
-      "model": "office/desk-drawer",
-      "x": 5.6,
-      "z": 1.6,
-      "yaw": 0,
-      "scale": 0.65,
-      "tint": "#a85d2a",
-      "box": {
-        "w": 0.9,
-        "d": 0.5
+        "w": 0.31,
+        "d": 0.36
       }
     },
     {
       "model": "proc:bean",
-      "x": -6.3,
-      "z": -5,
+      "x": -0.85,
+      "z": -4.6,
       "yaw": 0,
       "tint": "#b8413a",
       "box": {
@@ -478,8 +358,8 @@
     },
     {
       "model": "office/coffee-table",
-      "x": -3.2,
-      "z": -0.9,
+      "x": -4,
+      "z": -0.7,
       "yaw": 0,
       "scale": 0.6,
       "tint": "#1e2024",
@@ -490,8 +370,8 @@
     },
     {
       "model": "office/coffee-table",
-      "x": -1.4,
-      "z": -0.9,
+      "x": -2.8,
+      "z": -0.7,
       "yaw": 0,
       "scale": 0.6,
       "tint": "#1e2024",
@@ -514,8 +394,8 @@
     },
     {
       "model": "office/couch-small",
-      "x": 6.5,
-      "z": 0,
+      "x": 6.4,
+      "z": -4.7,
       "yaw": 270,
       "scale": 0.45,
       "tint": "#2b3f63",
@@ -526,10 +406,10 @@
     },
     {
       "model": "office/rug-round",
-      "x": 6.3,
-      "z": -3.2,
+      "x": 6.35,
+      "z": -3.45,
       "yaw": 0,
-      "scale": 3.6,
+      "scale": 1.2,
       "tint": "#a83a33",
       "y": 0.01
     },
@@ -559,9 +439,9 @@
     },
     {
       "model": "office/file-cabinet",
-      "x": -7.55,
-      "z": -3.3,
-      "yaw": 90,
+      "x": 1.55,
+      "z": -0.25,
+      "yaw": 0,
       "scale": 0.8,
       "tint": "#222428",
       "box": {
@@ -672,6 +552,430 @@
         "w": 0.39,
         "d": 0.57
       }
+    },
+    {
+      "model": "office/desk-drawer",
+      "x": 0,
+      "z": -2.65,
+      "yaw": 0,
+      "scale": 0.48,
+      "tint": "#805539",
+      "box": {
+        "w": 0.875,
+        "d": 0.407
+      }
+    },
+    {
+      "model": "office/desk-simple",
+      "x": 1.45,
+      "z": -2.65,
+      "yaw": 0,
+      "scale": 1.02,
+      "tint": "#73533a",
+      "box": {
+        "w": 1.275,
+        "d": 0.634
+      }
+    },
+    {
+      "model": "proc:desk",
+      "x": 2.9,
+      "z": -2.65,
+      "yaw": 0,
+      "scale": 1,
+      "tint": "#393d43",
+      "box": {
+        "w": 1.35,
+        "d": 0.62
+      }
+    },
+    {
+      "model": "office/desk-simple",
+      "yaw": 0,
+      "x": 4.35,
+      "z": -2.65,
+      "scale": 1,
+      "tint": "#875f3c",
+      "box": {
+        "w": 1.25,
+        "d": 0.62
+      }
+    },
+    {
+      "model": "office/desk-drawer",
+      "yaw": 0,
+      "x": 5.8,
+      "z": -2.65,
+      "scale": 0.5,
+      "tint": "#55402f",
+      "box": {
+        "w": 0.91,
+        "d": 0.42
+      }
+    },
+    {
+      "model": "office/desk-simple",
+      "yaw": 0,
+      "x": 0,
+      "z": 1.5,
+      "scale": 1.04,
+      "tint": "#6d5038",
+      "box": {
+        "w": 1.3,
+        "d": 0.64
+      }
+    },
+    {
+      "model": "office/desk-drawer",
+      "yaw": 0,
+      "x": 1.45,
+      "z": 1.5,
+      "scale": 0.52,
+      "tint": "#995f34",
+      "box": {
+        "w": 0.95,
+        "d": 0.44
+      }
+    },
+    {
+      "model": "proc:desk",
+      "yaw": 0,
+      "x": 2.9,
+      "z": 1.5,
+      "scale": 1,
+      "tint": "#534435",
+      "box": {
+        "w": 1.55,
+        "d": 0.68
+      }
+    },
+    {
+      "model": "office/desk-simple",
+      "yaw": 0,
+      "x": 4.35,
+      "z": 1.5,
+      "scale": 0.96,
+      "tint": "#534435",
+      "box": {
+        "w": 1.2,
+        "d": 0.6
+      }
+    },
+    {
+      "model": "office/desk-drawer",
+      "yaw": 0,
+      "x": 5.8,
+      "z": 1.5,
+      "scale": 0.55,
+      "tint": "#805638",
+      "box": {
+        "w": 1,
+        "d": 0.47
+      }
+    },
+    {
+      "model": "office/computer-screen",
+      "x": 0,
+      "z": -2.79,
+      "yaw": 0,
+      "scale": 1.05,
+      "y": 0.446
+    },
+    {
+      "model": "office/keyboard",
+      "x": 0,
+      "z": -2.54,
+      "yaw": 0,
+      "scale": 0.004,
+      "y": 0.445
+    },
+    {
+      "model": "office/mousepad",
+      "x": 0.2,
+      "z": -2.53,
+      "yaw": 0,
+      "scale": 0.105,
+      "y": 0.444
+    },
+    {
+      "model": "office/mouse",
+      "x": 0.23,
+      "z": -2.53,
+      "yaw": 0,
+      "scale": 1,
+      "y": 0.446
+    },
+    {
+      "model": "office/coffee-cup",
+      "x": -0.29,
+      "z": -2.63,
+      "yaw": 0,
+      "scale": 0.12,
+      "y": 0.447
+    },
+    {
+      "model": "office/dual-monitors",
+      "x": 1.45,
+      "z": -2.79,
+      "yaw": 0,
+      "scale": 0.105,
+      "y": 0.445
+    },
+    {
+      "model": "office/keyboard",
+      "x": 1.45,
+      "z": -2.54,
+      "yaw": 0,
+      "scale": 0.004,
+      "y": 0.444
+    },
+    {
+      "model": "office/book-stack",
+      "x": 1.11,
+      "z": -2.69,
+      "yaw": 0,
+      "scale": 0.12,
+      "y": 0.446
+    },
+    {
+      "model": "office/webcam",
+      "x": 1.45,
+      "z": -2.78,
+      "yaw": 0,
+      "scale": 0.03,
+      "y": 0.672
+    },
+    {
+      "model": "office/desk-lamp",
+      "x": 2.58,
+      "z": -2.77,
+      "yaw": 0,
+      "scale": 0.24,
+      "y": 0.374
+    },
+    {
+      "model": "office/computer-screen",
+      "x": 4.35,
+      "z": -2.79,
+      "yaw": 0,
+      "scale": 1.05,
+      "y": 0.436
+    },
+    {
+      "model": "office/keyboard",
+      "x": 4.35,
+      "z": -2.54,
+      "yaw": 0,
+      "scale": 0.004,
+      "y": 0.435
+    },
+    {
+      "model": "office/mousepad",
+      "x": 4.55,
+      "z": -2.53,
+      "yaw": 0,
+      "scale": 0.105,
+      "y": 0.434
+    },
+    {
+      "model": "office/office-phone",
+      "x": 4.04,
+      "z": -2.63,
+      "yaw": 0,
+      "scale": 0.002,
+      "y": 0.437
+    },
+    {
+      "model": "office/dual-monitors",
+      "x": 5.8,
+      "z": -2.79,
+      "yaw": 0,
+      "scale": 0.105,
+      "y": 0.464
+    },
+    {
+      "model": "office/keyboard",
+      "x": 5.8,
+      "z": -2.54,
+      "yaw": 0,
+      "scale": 0.004,
+      "y": 0.463
+    },
+    {
+      "model": "office/mouse",
+      "x": 6.03,
+      "z": -2.53,
+      "yaw": 0,
+      "scale": 1,
+      "y": 0.464
+    },
+    {
+      "model": "office/coffee-cup",
+      "x": 5.51,
+      "z": -2.63,
+      "yaw": 0,
+      "scale": 0.12,
+      "y": 0.465
+    },
+    {
+      "model": "office/sticky-notes",
+      "x": 6.12,
+      "z": -2.63,
+      "yaw": 0,
+      "scale": 0.08,
+      "y": 0.465
+    },
+    {
+      "model": "office/dual-monitors",
+      "x": 0,
+      "z": 1.64,
+      "yaw": 180,
+      "scale": 0.105,
+      "y": 0.453
+    },
+    {
+      "model": "office/keyboard",
+      "x": 0,
+      "z": 1.39,
+      "yaw": 180,
+      "scale": 0.004,
+      "y": 0.452
+    },
+    {
+      "model": "office/mousepad",
+      "x": 0.2,
+      "z": 1.38,
+      "yaw": 180,
+      "scale": 0.105,
+      "y": 0.451
+    },
+    {
+      "model": "office/desk-lamp",
+      "x": -0.32,
+      "z": 1.62,
+      "yaw": 180,
+      "scale": 0.24,
+      "y": 0.454
+    },
+    {
+      "model": "office/webcam",
+      "x": 0,
+      "z": 1.63,
+      "yaw": 180,
+      "scale": 0.03,
+      "y": 0.68
+    },
+    {
+      "model": "office/computer-screen",
+      "x": 1.45,
+      "z": 1.64,
+      "yaw": 180,
+      "scale": 1.05,
+      "y": 0.482
+    },
+    {
+      "model": "office/keyboard",
+      "x": 1.45,
+      "z": 1.39,
+      "yaw": 180,
+      "scale": 0.004,
+      "y": 0.481
+    },
+    {
+      "model": "office/mousepad",
+      "x": 1.65,
+      "z": 1.38,
+      "yaw": 180,
+      "scale": 0.105,
+      "y": 0.48
+    },
+    {
+      "model": "office/mouse",
+      "x": 1.68,
+      "z": 1.38,
+      "yaw": 180,
+      "scale": 1,
+      "y": 0.482
+    },
+    {
+      "model": "office/coffee-cup",
+      "x": 1.16,
+      "z": 1.48,
+      "yaw": 0,
+      "scale": 0.12,
+      "y": 0.483
+    },
+    {
+      "model": "office/dual-monitors",
+      "x": 2.9,
+      "z": 1.64,
+      "yaw": 180,
+      "scale": 0.105,
+      "y": 0.373
+    },
+    {
+      "model": "office/keyboard",
+      "x": 2.9,
+      "z": 1.39,
+      "yaw": 180,
+      "scale": 0.004,
+      "y": 0.372
+    },
+    {
+      "model": "office/book-stack",
+      "x": 2.56,
+      "z": 1.54,
+      "yaw": 0,
+      "scale": 0.12,
+      "y": 0.374
+    },
+    {
+      "model": "office/sticky-notes",
+      "x": 4.67,
+      "z": 1.48,
+      "yaw": 0,
+      "scale": 0.08,
+      "y": 0.42
+    },
+    {
+      "model": "office/computer-screen",
+      "x": 5.8,
+      "z": 1.64,
+      "yaw": 180,
+      "scale": 1.05,
+      "y": 0.51
+    },
+    {
+      "model": "office/keyboard",
+      "x": 5.8,
+      "z": 1.39,
+      "yaw": 180,
+      "scale": 0.004,
+      "y": 0.509
+    },
+    {
+      "model": "office/mousepad",
+      "x": 6,
+      "z": 1.38,
+      "yaw": 180,
+      "scale": 0.105,
+      "y": 0.508
+    },
+    {
+      "model": "office/coffee-cup",
+      "x": 5.51,
+      "z": 1.48,
+      "yaw": 0,
+      "scale": 0.12,
+      "y": 0.511
+    },
+    {
+      "model": "office/rug-pattern",
+      "x": -3.4,
+      "z": -0.9,
+      "yaw": 0,
+      "scale": 0.02,
+      "y": 0.012
     }
   ],
   "obstacles": []
