@@ -34,6 +34,10 @@ export interface SeatDef {
   yön: number;
   tür: string;
   model?: string;
+  /** Uniform scale for the seat model; defaults to 1. */
+  scale?: number;
+  /** Replaces the seat model colour, e.g. "#2b3550". */
+  tint?: string;
 }
 
 export interface DecorDef {
@@ -42,6 +46,12 @@ export interface DecorDef {
   z: number;
   /** Degrees. */
   yaw: number;
+  /** Uniform model scale; defaults to 1. */
+  scale?: number;
+  /** Height of the model base above the floor, e.g. for wall-mounted items. */
+  y?: number;
+  /** Replaces the model colour (or the colour of a procedural piece), e.g. "#b8413a". */
+  tint?: string;
   /** Unrotated footprint; becomes a collision box when present. */
   box?: { w: number; d: number };
 }

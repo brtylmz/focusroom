@@ -14,6 +14,9 @@ export function loadGltf(url: string): Promise<GLTF> {
   return pending;
 }
 
+/** Unprefixed names are Kenney furniture; "folder/name" names load from that folder (e.g. "office/desk"). */
 export function furnitureUrl(name: string): string {
+  const slash = name.indexOf('/');
+  if (slash > 0) return `/models/${name.slice(0, slash)}/${name.slice(slash + 1)}.glb`;
   return `/models/furniture/${name}.glb`;
 }

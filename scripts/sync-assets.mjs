@@ -6,7 +6,6 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const publicModels = join(root, 'client', 'public', 'models');
 const envDir = join(root, 'shared', 'src', 'environments');
 const characterSource = join(root, 'assets', 'models', 'characters');
-const furnitureSource = join(root, 'assets', 'models', 'furniture');
 const CHARACTERS = Array.from({ length: 18 }, (_, i) => `character-${String.fromCharCode(97 + i)}`);
 
 function collectFurnitureModels() {
@@ -43,8 +42,13 @@ for (const id of CHARACTERS) {
   if (textureResult === 'copied') copied += 1;
 }
 for (const name of collectFurnitureModels()) {
-  const result = copyIfNeeded(join(furnitureSource, `${name}.glb`), join(publicModels, 'furniture', `${name}.glb`));
-  if (result === 'missing') missing.push(`furniture/${name}.glb`);
+  // Prefixed names ("office/desk") live in assets/models/<prefix>; unprefixed ones are Kenney furniture.
+  const slash = name.indexOf('/');
+  const folder = slash > 0 ? name.slice(0, slash) : 'furniture';
+  const file = slash > 0 ? name.slice(slash + 1) : name;
+  const sourceDir = join(root, 'assets', 'models', folder);
+  const result = copyIfNeeded(join(sourceDir, `${file}.glb`), join(publicModels, folder, `${file}.glb`));
+  if (result === 'missing') missing.push(`${folder}/${file}.glb`);
   if (result === 'copied') copied += 1;
 }
 

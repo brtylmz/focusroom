@@ -3,56 +3,676 @@
   "name": "Ofis",
   "description": "Açık ofis masaları, sakin bir dinlenme köşesi.",
   "capacity": 20,
-  "bounds": { "minX": -8, "maxX": 8, "minZ": -6, "maxZ": 6 },
-  "spawn": { "x": 0, "z": 4.6 },
+  "bounds": {
+    "minX": -8,
+    "maxX": 8,
+    "minZ": -6,
+    "maxZ": 6
+  },
+  "spawn": {
+    "x": 0,
+    "z": 4.6
+  },
   "theme": {
-    "sky": "#d9e2ec",
-    "fog": "#e7edf3",
+    "sky": "#c9d3dd",
+    "fog": "#d9dde3",
     "fogNear": 22,
     "fogFar": 60,
-    "ambient": "#f2f6ff",
+    "ambient": "#ffffff",
     "ambientIntensity": 0.9,
-    "sun": "#ffffff",
-    "sunIntensity": 1.0,
-    "ground": "#c9ccd1",
-    "wall": "#eef1f5",
+    "sun": "#fff1dc",
+    "sunIntensity": 1,
+    "ground": "#4f545c",
+    "wall": "#e6e9ee",
     "accent": "#4f7cac"
   },
   "seats": [
-    { "id": "q1-n", "pozisyon": { "x": -5.0, "y": 0.23, "z": -3.2 }, "yön": 0, "tür": "sandalye", "model": "chairDesk" },
-    { "id": "q1-s", "pozisyon": { "x": -5.0, "y": 0.23, "z": -1.8 }, "yön": 180, "tür": "sandalye", "model": "chairDesk" },
-    { "id": "q1-w", "pozisyon": { "x": -5.7, "y": 0.23, "z": -2.5 }, "yön": 90, "tür": "sandalye", "model": "chairDesk" },
-    { "id": "q1-e", "pozisyon": { "x": -4.3, "y": 0.23, "z": -2.5 }, "yön": 270, "tür": "sandalye", "model": "chairDesk" },
-    { "id": "d1-w", "pozisyon": { "x": -2.7, "y": 0.23, "z": -2.5 }, "yön": 90, "tür": "sandalye", "model": "chairDesk" },
-    { "id": "d1-e", "pozisyon": { "x": -1.3, "y": 0.23, "z": -2.5 }, "yön": 270, "tür": "sandalye", "model": "chairDesk" },
-    { "id": "q2-n", "pozisyon": { "x": 1.0, "y": 0.23, "z": -3.2 }, "yön": 0, "tür": "sandalye", "model": "chairDesk" },
-    { "id": "q2-s", "pozisyon": { "x": 1.0, "y": 0.23, "z": -1.8 }, "yön": 180, "tür": "sandalye", "model": "chairDesk" },
-    { "id": "q2-w", "pozisyon": { "x": 0.3, "y": 0.23, "z": -2.5 }, "yön": 90, "tür": "sandalye", "model": "chairDesk" },
-    { "id": "q2-e", "pozisyon": { "x": 1.7, "y": 0.23, "z": -2.5 }, "yön": 270, "tür": "sandalye", "model": "chairDesk" },
-    { "id": "q3-n", "pozisyon": { "x": 4.0, "y": 0.23, "z": -3.2 }, "yön": 0, "tür": "sandalye", "model": "chairDesk" },
-    { "id": "q3-s", "pozisyon": { "x": 4.0, "y": 0.23, "z": -1.8 }, "yön": 180, "tür": "sandalye", "model": "chairDesk" },
-    { "id": "q3-w", "pozisyon": { "x": 3.3, "y": 0.23, "z": -2.5 }, "yön": 90, "tür": "sandalye", "model": "chairDesk" },
-    { "id": "q3-e", "pozisyon": { "x": 4.7, "y": 0.23, "z": -2.5 }, "yön": 270, "tür": "sandalye", "model": "chairDesk" },
-    { "id": "d2-w", "pozisyon": { "x": -5.7, "y": 0.23, "z": 1.0 }, "yön": 90, "tür": "sandalye", "model": "chairDesk" },
-    { "id": "d2-e", "pozisyon": { "x": -4.3, "y": 0.23, "z": 1.0 }, "yön": 270, "tür": "sandalye", "model": "chairDesk" },
-    { "id": "s1-n", "pozisyon": { "x": -1.0, "y": 0.23, "z": 0.3 }, "yön": 0, "tür": "sandalye", "model": "chairDesk" },
-    { "id": "d3-w", "pozisyon": { "x": 1.3, "y": 0.23, "z": 1.0 }, "yön": 90, "tür": "sandalye", "model": "chairDesk" },
-    { "id": "d3-e", "pozisyon": { "x": 2.7, "y": 0.23, "z": 1.0 }, "yön": 270, "tür": "sandalye", "model": "chairDesk" },
-    { "id": "s2-n", "pozisyon": { "x": 5.0, "y": 0.23, "z": 0.3 }, "yön": 0, "tür": "sandalye", "model": "chairDesk" }
+    {
+      "id": "a1-n",
+      "pozisyon": {
+        "x": -5.6,
+        "y": 0.23,
+        "z": -4
+      },
+      "yön": 0,
+      "tür": "sandalye",
+      "model": "office/office-chair",
+      "scale": 0.6,
+      "tint": "#2a2e36"
+    },
+    {
+      "id": "a1-s",
+      "pozisyon": {
+        "x": -5.6,
+        "y": 0.23,
+        "z": -2.4000000000000004
+      },
+      "yön": 180,
+      "tür": "sandalye",
+      "model": "office/office-chair",
+      "scale": 0.6,
+      "tint": "#2a2e36"
+    },
+    {
+      "id": "a2-n",
+      "pozisyon": {
+        "x": -2.8,
+        "y": 0.23,
+        "z": -4
+      },
+      "yön": 0,
+      "tür": "sandalye",
+      "model": "office/office-chair",
+      "scale": 0.6,
+      "tint": "#2a2e36"
+    },
+    {
+      "id": "a2-s",
+      "pozisyon": {
+        "x": -2.8,
+        "y": 0.23,
+        "z": -2.4000000000000004
+      },
+      "yön": 180,
+      "tür": "sandalye",
+      "model": "office/office-chair",
+      "scale": 0.6,
+      "tint": "#2a2e36"
+    },
+    {
+      "id": "a3-n",
+      "pozisyon": {
+        "x": 0,
+        "y": 0.23,
+        "z": -4
+      },
+      "yön": 0,
+      "tür": "sandalye",
+      "model": "office/office-chair",
+      "scale": 0.6,
+      "tint": "#2a2e36"
+    },
+    {
+      "id": "a3-s",
+      "pozisyon": {
+        "x": 0,
+        "y": 0.23,
+        "z": -2.4000000000000004
+      },
+      "yön": 180,
+      "tür": "sandalye",
+      "model": "office/office-chair",
+      "scale": 0.6,
+      "tint": "#2a2e36"
+    },
+    {
+      "id": "a4-n",
+      "pozisyon": {
+        "x": 2.8,
+        "y": 0.23,
+        "z": -4
+      },
+      "yön": 0,
+      "tür": "sandalye",
+      "model": "office/office-chair",
+      "scale": 0.6,
+      "tint": "#2a2e36"
+    },
+    {
+      "id": "a4-s",
+      "pozisyon": {
+        "x": 2.8,
+        "y": 0.23,
+        "z": -2.4000000000000004
+      },
+      "yön": 180,
+      "tür": "sandalye",
+      "model": "office/office-chair",
+      "scale": 0.6,
+      "tint": "#2a2e36"
+    },
+    {
+      "id": "a5-n",
+      "pozisyon": {
+        "x": 5.6,
+        "y": 0.23,
+        "z": -4
+      },
+      "yön": 0,
+      "tür": "sandalye",
+      "model": "office/office-chair",
+      "scale": 0.6,
+      "tint": "#2a2e36"
+    },
+    {
+      "id": "a5-s",
+      "pozisyon": {
+        "x": 5.6,
+        "y": 0.23,
+        "z": -2.4000000000000004
+      },
+      "yön": 180,
+      "tür": "sandalye",
+      "model": "office/office-chair",
+      "scale": 0.6,
+      "tint": "#2a2e36"
+    },
+    {
+      "id": "b1-n",
+      "pozisyon": {
+        "x": -5.6,
+        "y": 0.23,
+        "z": 0.8
+      },
+      "yön": 0,
+      "tür": "sandalye",
+      "model": "office/office-chair",
+      "scale": 0.6,
+      "tint": "#2a2e36"
+    },
+    {
+      "id": "b1-s",
+      "pozisyon": {
+        "x": -5.6,
+        "y": 0.23,
+        "z": 2.4000000000000004
+      },
+      "yön": 180,
+      "tür": "sandalye",
+      "model": "office/office-chair",
+      "scale": 0.6,
+      "tint": "#2a2e36"
+    },
+    {
+      "id": "b2-n",
+      "pozisyon": {
+        "x": -2.8,
+        "y": 0.23,
+        "z": 0.8
+      },
+      "yön": 0,
+      "tür": "sandalye",
+      "model": "office/office-chair",
+      "scale": 0.6,
+      "tint": "#2a2e36"
+    },
+    {
+      "id": "b2-s",
+      "pozisyon": {
+        "x": -2.8,
+        "y": 0.23,
+        "z": 2.4000000000000004
+      },
+      "yön": 180,
+      "tür": "sandalye",
+      "model": "office/office-chair",
+      "scale": 0.6,
+      "tint": "#2a2e36"
+    },
+    {
+      "id": "b3-n",
+      "pozisyon": {
+        "x": 0,
+        "y": 0.23,
+        "z": 0.8
+      },
+      "yön": 0,
+      "tür": "sandalye",
+      "model": "office/office-chair",
+      "scale": 0.6,
+      "tint": "#2a2e36"
+    },
+    {
+      "id": "b3-s",
+      "pozisyon": {
+        "x": 0,
+        "y": 0.23,
+        "z": 2.4000000000000004
+      },
+      "yön": 180,
+      "tür": "sandalye",
+      "model": "office/office-chair",
+      "scale": 0.6,
+      "tint": "#2a2e36"
+    },
+    {
+      "id": "b4-n",
+      "pozisyon": {
+        "x": 2.8,
+        "y": 0.23,
+        "z": 0.8
+      },
+      "yön": 0,
+      "tür": "sandalye",
+      "model": "office/office-chair",
+      "scale": 0.6,
+      "tint": "#2a2e36"
+    },
+    {
+      "id": "b4-s",
+      "pozisyon": {
+        "x": 2.8,
+        "y": 0.23,
+        "z": 2.4000000000000004
+      },
+      "yön": 180,
+      "tür": "sandalye",
+      "model": "office/office-chair",
+      "scale": 0.6,
+      "tint": "#2a2e36"
+    },
+    {
+      "id": "b5-n",
+      "pozisyon": {
+        "x": 5.6,
+        "y": 0.23,
+        "z": 0.8
+      },
+      "yön": 0,
+      "tür": "sandalye",
+      "model": "office/office-chair",
+      "scale": 0.6,
+      "tint": "#2a2e36"
+    },
+    {
+      "id": "b5-s",
+      "pozisyon": {
+        "x": 5.6,
+        "y": 0.23,
+        "z": 2.4000000000000004
+      },
+      "yön": 180,
+      "tür": "sandalye",
+      "model": "office/office-chair",
+      "scale": 0.6,
+      "tint": "#2a2e36"
+    }
   ],
   "decor": [
-    { "model": "tableRound", "x": -5.0, "z": -2.5, "yaw": 0, "box": { "w": 0.69, "d": 0.8 } },
-    { "model": "tableRound", "x": -2.0, "z": -2.5, "yaw": 0, "box": { "w": 0.69, "d": 0.8 } },
-    { "model": "tableRound", "x": 1.0, "z": -2.5, "yaw": 0, "box": { "w": 0.69, "d": 0.8 } },
-    { "model": "tableRound", "x": 4.0, "z": -2.5, "yaw": 0, "box": { "w": 0.69, "d": 0.8 } },
-    { "model": "tableRound", "x": -5.0, "z": 1.0, "yaw": 0, "box": { "w": 0.69, "d": 0.8 } },
-    { "model": "tableRound", "x": -1.0, "z": 1.0, "yaw": 0, "box": { "w": 0.69, "d": 0.8 } },
-    { "model": "tableRound", "x": 2.0, "z": 1.0, "yaw": 0, "box": { "w": 0.69, "d": 0.8 } },
-    { "model": "tableRound", "x": 5.0, "z": 1.0, "yaw": 0, "box": { "w": 0.69, "d": 0.8 } },
-    { "model": "loungeSofa", "x": -6.0, "z": -5.6, "yaw": 0, "box": { "w": 0.98, "d": 0.41 } },
-    { "model": "tableCoffee", "x": -4.4, "z": -5.4, "yaw": 0, "box": { "w": 0.66, "d": 0.4 } },
-    { "model": "pottedPlant", "x": 7.4, "z": -5.4, "yaw": 0, "box": { "w": 0.21, "d": 0.24 } },
-    { "model": "pottedPlant", "x": -7.4, "z": 5.4, "yaw": 0, "box": { "w": 0.21, "d": 0.24 } }
+    {
+      "model": "office/window-blinds",
+      "x": -2.5,
+      "z": -5.9,
+      "yaw": 0,
+      "scale": 1,
+      "y": 0.25
+    },
+    {
+      "model": "office/window-blinds",
+      "x": 0.5,
+      "z": -5.9,
+      "yaw": 0,
+      "scale": 1,
+      "y": 0.25
+    },
+    {
+      "model": "office/wall-art",
+      "x": 6.6,
+      "z": -5.92,
+      "yaw": 0,
+      "y": 0.9
+    },
+    {
+      "model": "proc:panel",
+      "x": 3.8,
+      "z": -5.9,
+      "yaw": 0,
+      "tint": "#2d4f7c",
+      "box": {
+        "w": 1.2,
+        "d": 0.06
+      }
+    },
+    {
+      "model": "proc:counter",
+      "x": 3.8,
+      "z": -4.9,
+      "yaw": 0,
+      "tint": "#8c929a",
+      "box": {
+        "w": 2.6,
+        "d": 0.8
+      }
+    },
+    {
+      "model": "office/water-cooler",
+      "x": 5.6,
+      "z": -5.3,
+      "yaw": 0,
+      "scale": 0.3,
+      "box": {
+        "w": 0.27,
+        "d": 0.32
+      }
+    },
+    {
+      "model": "office/desk-drawer",
+      "x": -5.6,
+      "z": -3.2,
+      "yaw": 0,
+      "scale": 0.65,
+      "tint": "#a85d2a",
+      "box": {
+        "w": 0.9,
+        "d": 0.5
+      }
+    },
+    {
+      "model": "office/desk-drawer",
+      "x": -2.8,
+      "z": -3.2,
+      "yaw": 0,
+      "scale": 0.65,
+      "tint": "#a85d2a",
+      "box": {
+        "w": 0.9,
+        "d": 0.5
+      }
+    },
+    {
+      "model": "office/desk-drawer",
+      "x": 0,
+      "z": -3.2,
+      "yaw": 0,
+      "scale": 0.65,
+      "tint": "#a85d2a",
+      "box": {
+        "w": 0.9,
+        "d": 0.5
+      }
+    },
+    {
+      "model": "office/desk-drawer",
+      "x": 2.8,
+      "z": -3.2,
+      "yaw": 0,
+      "scale": 0.65,
+      "tint": "#a85d2a",
+      "box": {
+        "w": 0.9,
+        "d": 0.5
+      }
+    },
+    {
+      "model": "office/desk-drawer",
+      "x": 5.6,
+      "z": -3.2,
+      "yaw": 0,
+      "scale": 0.65,
+      "tint": "#a85d2a",
+      "box": {
+        "w": 0.9,
+        "d": 0.5
+      }
+    },
+    {
+      "model": "office/desk-drawer",
+      "x": -5.6,
+      "z": 1.6,
+      "yaw": 0,
+      "scale": 0.65,
+      "tint": "#a85d2a",
+      "box": {
+        "w": 0.9,
+        "d": 0.5
+      }
+    },
+    {
+      "model": "office/desk-drawer",
+      "x": -2.8,
+      "z": 1.6,
+      "yaw": 0,
+      "scale": 0.65,
+      "tint": "#a85d2a",
+      "box": {
+        "w": 0.9,
+        "d": 0.5
+      }
+    },
+    {
+      "model": "office/desk-drawer",
+      "x": 0,
+      "z": 1.6,
+      "yaw": 0,
+      "scale": 0.65,
+      "tint": "#a85d2a",
+      "box": {
+        "w": 0.9,
+        "d": 0.5
+      }
+    },
+    {
+      "model": "office/desk-drawer",
+      "x": 2.8,
+      "z": 1.6,
+      "yaw": 0,
+      "scale": 0.65,
+      "tint": "#a85d2a",
+      "box": {
+        "w": 0.9,
+        "d": 0.5
+      }
+    },
+    {
+      "model": "office/desk-drawer",
+      "x": 5.6,
+      "z": 1.6,
+      "yaw": 0,
+      "scale": 0.65,
+      "tint": "#a85d2a",
+      "box": {
+        "w": 0.9,
+        "d": 0.5
+      }
+    },
+    {
+      "model": "proc:bean",
+      "x": -6.3,
+      "z": -5,
+      "yaw": 0,
+      "tint": "#b8413a",
+      "box": {
+        "w": 0.8,
+        "d": 0.8
+      }
+    },
+    {
+      "model": "office/coffee-table",
+      "x": -3.2,
+      "z": -0.9,
+      "yaw": 0,
+      "scale": 0.6,
+      "tint": "#1e2024",
+      "box": {
+        "w": 0.7,
+        "d": 0.38
+      }
+    },
+    {
+      "model": "office/coffee-table",
+      "x": -1.4,
+      "z": -0.9,
+      "yaw": 0,
+      "scale": 0.6,
+      "tint": "#1e2024",
+      "box": {
+        "w": 0.7,
+        "d": 0.38
+      }
+    },
+    {
+      "model": "office/couch-small",
+      "x": -6.6,
+      "z": -1.5,
+      "yaw": 90,
+      "scale": 0.4,
+      "tint": "#2b3f63",
+      "box": {
+        "w": 0.8,
+        "d": 0.8
+      }
+    },
+    {
+      "model": "office/couch-small",
+      "x": 6.5,
+      "z": 0,
+      "yaw": 270,
+      "scale": 0.45,
+      "tint": "#2b3f63",
+      "box": {
+        "w": 0.95,
+        "d": 0.9
+      }
+    },
+    {
+      "model": "office/rug-round",
+      "x": 6.3,
+      "z": -3.2,
+      "yaw": 0,
+      "scale": 3.6,
+      "tint": "#a83a33",
+      "y": 0.01
+    },
+    {
+      "model": "office/file-cabinet",
+      "x": 7.55,
+      "z": -3.6,
+      "yaw": 270,
+      "scale": 0.8,
+      "tint": "#b2302b",
+      "box": {
+        "w": 0.61,
+        "d": 0.53
+      }
+    },
+    {
+      "model": "office/file-cabinet",
+      "x": 7.55,
+      "z": -2.2,
+      "yaw": 270,
+      "scale": 0.8,
+      "tint": "#b2302b",
+      "box": {
+        "w": 0.61,
+        "d": 0.53
+      }
+    },
+    {
+      "model": "office/file-cabinet",
+      "x": -7.55,
+      "z": -3.3,
+      "yaw": 90,
+      "scale": 0.8,
+      "tint": "#222428",
+      "box": {
+        "w": 0.61,
+        "d": 0.53
+      }
+    },
+    {
+      "model": "office/bookshelf",
+      "x": 7.6,
+      "z": -0.6,
+      "yaw": 270,
+      "scale": 0.4,
+      "tint": "#5a3a22",
+      "box": {
+        "w": 1.11,
+        "d": 0.18
+      }
+    },
+    {
+      "model": "office/bookshelf",
+      "x": 7.6,
+      "z": 1.2,
+      "yaw": 270,
+      "scale": 0.4,
+      "tint": "#5a3a22",
+      "box": {
+        "w": 1.11,
+        "d": 0.18
+      }
+    },
+    {
+      "model": "office/plant-white-pot",
+      "x": 7.3,
+      "z": 4.6,
+      "yaw": 0,
+      "scale": 0.3,
+      "box": {
+        "w": 0.5,
+        "d": 0.45
+      }
+    },
+    {
+      "model": "office/plant-white-pot",
+      "x": -7.3,
+      "z": 5.2,
+      "yaw": 0,
+      "scale": 0.3,
+      "box": {
+        "w": 0.5,
+        "d": 0.45
+      }
+    },
+    {
+      "model": "office/plant-white-pot",
+      "x": -7.3,
+      "z": -4.8,
+      "yaw": 0,
+      "scale": 0.3,
+      "box": {
+        "w": 0.5,
+        "d": 0.45
+      }
+    },
+    {
+      "model": "office/plant-white-pot",
+      "x": 4.6,
+      "z": 5.2,
+      "yaw": 0,
+      "scale": 0.3,
+      "box": {
+        "w": 0.5,
+        "d": 0.45
+      }
+    },
+    {
+      "model": "office/wall-art",
+      "x": -7.9,
+      "z": 2.5,
+      "yaw": 90,
+      "y": 0.6
+    },
+    {
+      "model": "office/wall-art",
+      "x": -7.9,
+      "z": -0.5,
+      "yaw": 90,
+      "y": 0.6
+    },
+    {
+      "model": "office/trashcan",
+      "x": -7.2,
+      "z": 0.8,
+      "yaw": 0,
+      "scale": 0.5,
+      "box": {
+        "w": 0.37,
+        "d": 0.37
+      }
+    },
+    {
+      "model": "office/printer",
+      "x": -6.8,
+      "z": 3.4,
+      "yaw": 0,
+      "scale": 1.5,
+      "box": {
+        "w": 0.39,
+        "d": 0.57
+      }
+    }
   ],
   "obstacles": []
 }

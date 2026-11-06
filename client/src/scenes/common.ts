@@ -5,7 +5,7 @@ import { furnitureUrl, loadGltf } from '../systems/assets.js';
 
 export type Quality = 'low' | 'medium' | 'high';
 
-const WALL_HEIGHT: Record<EnvironmentId, number> = { library: 1.3, cafe: 1.3, office: 1.3, park: 0.45 };
+const WALL_HEIGHT: Record<EnvironmentId, number> = { library: 1.3, cafe: 1.3, office: 2.4, park: 0.45 };
 const MAX_POINT_LIGHTS = 4;
 
 export interface SceneContext {
@@ -134,7 +134,14 @@ export async function buildEnvironment(
   const decorations: Promise<unknown>[] = [];
   for (const decor of env.decor) decorations.push(placeDecor(decor, root, quality));
   for (const seat of env.seats) {
-    if (seat.model) decorations.push(placeFurniture(seat.model, seat.pozisyon.x, seat.pozisyon.z, seat.yön, root, quality));
+    if (seat.model) {
+      decorations.push(
+        placeFurniture(seat.model, seat.pozisyon.x, seat.pozisyon.z, seat.yön, root, quality, {
+          scale: seat.scale,
+          tint: seat.tint,
+        }),
+      );
+    }
   }
   await Promise.all(decorations);
   await module.decorate(ctx);
@@ -161,10 +168,16 @@ function placeDecor(decor: DecorDef, root: THREE.Group, quality: Quality): Promi
     root.add(group);
     return Promise.resolve();
   }
-  return placeFurniture(decor.model, decor.x, decor.z, decor.yaw, root, quality);
+  return placeFurniture(decor.model, decor.x, decor.z, decor.yaw, root, quality, decor);
 }
 
-/** Loads a Kenney model and centres its footprint on (x, z) with its base on the floor. */
+interface FurnitureOptions {
+  scale?: number;
+  y?: number;
+  tint?: string;
+}
+
+/** Loads a model and centres its footprint on (x, z) with its base at height y (default: floor). */
 async function placeFurniture(
   name: string,
   x: number,
@@ -172,15 +185,18 @@ async function placeFurniture(
   yawDeg: number,
   root: THREE.Group,
   quality: Quality,
+  options: FurnitureOptions = {},
 ): Promise<void> {
   const gltf = await loadGltf(furnitureUrl(name));
   const model = gltf.scene.clone(true);
+  model.scale.setScalar(options.scale ?? 1);
+  if (options.tint) tintModel(model, options.tint);
   const box = new THREE.Box3().setFromObject(model);
   const center = box.getCenter(new THREE.Vector3());
   model.position.set(-center.x, -box.min.y, -center.z);
   const holder = new THREE.Group();
   holder.add(model);
-  holder.position.set(x, 0, z);
+  holder.position.set(x, options.y ?? 0, z);
   holder.rotation.y = degToRad(yawDeg);
   if (quality !== 'low') {
     holder.traverse((o) => {
@@ -191,6 +207,20 @@ async function placeFurniture(
     });
   }
   root.add(holder);
+}
+
+/** Replaces the colour of every mesh in a model (cloned materials, so cached models are untouched). */
+function tintModel(model: THREE.Object3D, color: string): void {
+  const apply = (m: THREE.Material): THREE.Material => {
+    const copy = m.clone();
+    if (copy instanceof THREE.MeshStandardMaterial) copy.color.set(color);
+    return copy;
+  };
+  model.traverse((o) => {
+    if (o instanceof THREE.Mesh) {
+      o.material = Array.isArray(o.material) ? o.material.map(apply) : apply(o.material);
+    }
+  });
 }
 
 function buildProcedural(kind: string, decor: DecorDef, quality: Quality): THREE.Group {
@@ -205,8 +235,23 @@ function buildProcedural(kind: string, decor: DecorDef, quality: Quality): THREE
   };
   const w = decor.box?.w ?? 1;
   const d = decor.box?.d ?? 1;
+  const tint = decor.tint;
 
   switch (kind) {
+    case 'counter': {
+      add(new THREE.BoxGeometry(w, 1.0, d), tint ?? '#8c929a', 0, 0.5, 0);
+      add(new THREE.BoxGeometry(w + 0.06, 0.05, d + 0.06), '#2b2f36', 0, 1.025, 0);
+      break;
+    }
+    case 'panel':
+      add(new THREE.BoxGeometry(w, 2.2, d), tint ?? '#2d4f7c', 0, 1.1, 0);
+      break;
+    case 'bean': {
+      const bean = new THREE.SphereGeometry(0.5, 16, 12);
+      bean.scale(1, 0.55, 1);
+      add(bean, tint ?? '#b8413a', 0, 0.27, 0);
+      break;
+    }
     case 'picnic': {
       const topDepth = d * 0.6;
       add(new THREE.BoxGeometry(w, 0.05, topDepth), '#9b6b3f', 0, 0.37, 0);
