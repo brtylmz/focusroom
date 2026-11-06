@@ -206,13 +206,11 @@ async function placeFurniture(
   root: THREE.Group,
   quality: Quality,
   options: FurnitureOptions = {},
-  scale = 1,
 ): Promise<void> {
   const gltf = await loadGltf(furnitureUrl(name));
   const model = gltf.scene.clone(true);
   model.scale.setScalar(options.scale ?? 1);
   if (options.tint) tintModel(model, options.tint);
-  model.scale.setScalar(scale);
   model.updateMatrixWorld(true);
   const box = new THREE.Box3().setFromObject(model);
   const center = box.getCenter(new THREE.Vector3());
