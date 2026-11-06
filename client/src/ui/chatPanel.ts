@@ -46,7 +46,7 @@ export class ChatPanel {
     this.log = el('div', { class: 'chat-log', attrs: { role: 'log', 'aria-live': 'polite' } });
     this.input = el('textarea', {
       attrs: {
-        rows: '1',
+        rows: '2',
         maxlength: String(LIMITS.chatMaxLength),
         placeholder: tr.chat.placeholder,
         'aria-label': tr.chat.placeholder,
@@ -56,7 +56,7 @@ export class ChatPanel {
         keydown: (e) => this.onKey(e),
       },
     });
-    this.counter = el('div', { class: 'counter' });
+    this.counter = el('div', { class: 'counter', attrs: { 'aria-live': 'polite' } });
     this.sendButton = el('button', { class: 'primary', text: tr.chat.send, on: { click: () => void this.submit() } });
     const form = el('div', { class: 'chat-form' }, [this.input, this.sendButton]);
 
@@ -108,6 +108,10 @@ export class ChatPanel {
 
   isOpen(): boolean {
     return this.open;
+  }
+
+  refreshMutes(): void {
+    this.renderAll();
   }
 
   private renderAll(): void {
@@ -170,10 +174,10 @@ export class ChatPanel {
     const text = this.input.value.trim();
     if (!text || this.sending) return;
     this.sending = true;
-    this.sendButton.disabled = true;
+    this.updateCounter();
     const error = await this.hooks.send(text);
     this.sending = false;
-    this.sendButton.disabled = false;
+    this.updateCounter();
     if (error) {
       this.hooks.onError(error);
       return;
@@ -185,5 +189,6 @@ export class ChatPanel {
   private updateCounter(): void {
     const length = [...this.input.value].length;
     this.counter.textContent = `${length}/${LIMITS.chatMaxLength}`;
+    this.sendButton.disabled = this.sending || this.input.value.trim().length === 0;
   }
 }

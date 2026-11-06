@@ -23,6 +23,8 @@ export class BoardPanel {
 
   constructor(
     private readonly selfId: string,
+    private readonly mutes: Set<string>,
+    private readonly onMutesChanged: () => void,
     private readonly onToggle: (open: boolean) => void,
   ) {
     this.total = el('div', { class: 'room-today' });
@@ -73,6 +75,10 @@ export class BoardPanel {
     this.render();
   }
 
+  refreshMutes(): void {
+    this.render();
+  }
+
   private setSort(mode: SortMode): void {
     this.sort = mode;
     this.refreshSortButtons();
@@ -119,11 +125,31 @@ export class BoardPanel {
     const statusKey = row.connected ? row.status : 'standing';
     const statusText = row.connected ? tr.pomodoro.status[statusKey === 'standing' ? 'standing' : statusKey] : tr.board.away;
     const pill = el('span', { class: `status-pill ${STATUS_CLASS[row.status]}`, text: statusText });
+    const personContent = [name];
+    if (!mine) {
+      const muted = this.mutes.has(row.playerId);
+      const label = muted ? tr.chat.unmute : tr.chat.mute;
+      personContent.push(
+        el('button', {
+          class: 'ghost small board-mute',
+          text: label,
+          attrs: { title: label, 'aria-label': `${label}: ${row.nickname}` },
+          on: { click: () => this.toggleMute(row.playerId) },
+        }),
+      );
+    }
     return el('tr', { class: cls }, [
-      el('td', {}, [name]),
+      el('td', {}, [el('div', { class: 'board-person' }, personContent)]),
       el('td', { text: tr.board.minutes(row.visitMinutes) }),
       el('td', { text: tr.board.minutes(row.todayMinutes) }),
       el('td', {}, [pill]),
     ]);
+  }
+
+  private toggleMute(playerId: string): void {
+    if (this.mutes.has(playerId)) this.mutes.delete(playerId);
+    else this.mutes.add(playerId);
+    this.onMutesChanged();
+    this.render();
   }
 }

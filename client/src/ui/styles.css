@@ -618,7 +618,14 @@ label.field {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 0.4rem;
-  align-items: center;
+  align-items: stretch;
+}
+
+.chat-form textarea {
+  min-height: 3.2rem;
+  max-height: 8rem;
+  resize: vertical;
+  line-height: 1.35;
 }
 
 .counter {
@@ -661,8 +668,19 @@ label.field {
   align-items: center;
   gap: 0.4rem;
   max-width: 120px;
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.board-person {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.board-mute {
+  flex: none;
 }
 
 .thumb-sm {

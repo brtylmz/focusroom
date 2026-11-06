@@ -157,7 +157,10 @@ export class RoomScreen {
     this.chat = new ChatPanel(dockRight, this.selfId, deps.mutes, {
       send: (text) => this.sendChat(text),
       report: (messageId) => this.reportMessage(messageId),
-      mutesChanged: () => saveMutes(deps.mutes),
+      mutesChanged: () => {
+        saveMutes(deps.mutes);
+        this.board.refreshMutes();
+      },
       onError: (text) => showToast(text, 'error'),
     });
 
@@ -168,7 +171,10 @@ export class RoomScreen {
     });
     this.pomodoroPanel.setCycles(deps.settings.pomodoro.cyclesBeforeLongBreak);
 
-    this.board = new BoardPanel(this.selfId, () => undefined);
+    this.board = new BoardPanel(this.selfId, deps.mutes, () => {
+      saveMutes(deps.mutes);
+      this.chat.refreshMutes();
+    }, () => undefined);
     this.keyboard = new Keyboard(() => this.chat.isTyping());
 
     const hudButton = (text: string, onClick: () => void): HTMLElement =>
