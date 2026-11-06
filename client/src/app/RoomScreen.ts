@@ -445,8 +445,8 @@ export class RoomScreen {
     this.chat.append(message);
     if (message.kind !== 'user' || !message.authorId) return;
     if (this.deps.mutes.has(message.authorId)) return;
-    if (this.deps.settings.quietWhileFocusing && this.timer.isFocusRunning) return;
-    if (message.authorId !== this.selfId && this.deps.settings.chatSound) playChime('message');
+    const quiet = this.deps.settings.quietWhileFocusing && this.timer.isFocusRunning;
+    if (!quiet && message.authorId !== this.selfId && this.deps.settings.chatSound) playChime('message');
     if (this.deps.settings.bubbles) {
       const avatar = message.authorId === this.selfId ? this.localAvatar : this.remotes.get(message.authorId)?.avatar;
       avatar?.showBubble(message.text, BUBBLE_MS);
