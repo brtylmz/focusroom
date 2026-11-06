@@ -5,8 +5,8 @@ import { fileURLToPath } from 'node:url';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const publicModels = join(root, 'client', 'public', 'models');
 const envDir = join(root, 'shared', 'src', 'environments');
-const characterSource = join(root, 'kenney_blocky-characters_20', 'Models', 'GLB format');
-const furnitureSource = join(root, 'kenney_furniture-kit', 'Models', 'GLTF format');
+const characterSource = join(root, 'assets', 'models', 'characters');
+const furnitureSource = join(root, 'assets', 'models', 'furniture');
 const CHARACTERS = Array.from({ length: 18 }, (_, i) => `character-${String.fromCharCode(97 + i)}`);
 
 function collectFurnitureModels() {
