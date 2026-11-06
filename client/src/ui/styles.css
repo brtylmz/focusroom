@@ -922,6 +922,13 @@ label.field {
     max-height: 50vh;
   }
 
+  .dock-right .chat-log {
+    flex: none;
+    min-height: 0;
+    max-height: none;
+    overflow-y: visible;
+  }
+
   .room-title {
     min-width: 0;
   }

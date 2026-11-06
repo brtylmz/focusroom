@@ -74,10 +74,11 @@ export class ChatPanel {
   append(message: ChatMessage): void {
     this.messages.push(message);
     if (this.messages.length > LIMITS.chatHistory) this.messages.shift();
-    const atBottom = this.log.scrollHeight - this.log.scrollTop - this.log.clientHeight < 40;
+    const scrollTarget = this.getScrollTarget();
+    const atBottom = scrollTarget.scrollHeight - scrollTarget.scrollTop - scrollTarget.clientHeight < 40;
     const node = this.render(message);
     if (node) this.log.append(node);
-    if (atBottom) this.log.scrollTop = this.log.scrollHeight;
+    if (atBottom) scrollTarget.scrollTop = scrollTarget.scrollHeight;
     if (!this.open && message.authorId !== this.selfId) {
       this.unread += 1;
       this.badge.textContent = tr.chat.unread(this.unread);
@@ -123,7 +124,12 @@ export class ChatPanel {
       const node = this.render(m);
       if (node) this.log.append(node);
     }
-    this.log.scrollTop = this.log.scrollHeight;
+    const scrollTarget = this.getScrollTarget();
+    scrollTarget.scrollTop = scrollTarget.scrollHeight;
+  }
+
+  private getScrollTarget(): HTMLElement {
+    return getComputedStyle(this.log).overflowY === 'visible' ? this.element.parentElement ?? this.log : this.log;
   }
 
   private render(m: ChatMessage): HTMLElement | null {
