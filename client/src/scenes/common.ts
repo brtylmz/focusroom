@@ -5,15 +5,22 @@ import { furnitureUrl, loadGltf } from '../systems/assets.js';
 
 export type Quality = 'low' | 'medium' | 'high';
 
-const WALL_HEIGHT: Record<EnvironmentId, number> = { library: 1.3, cafe: 1.3, office: 1.3, park: 0.45 };
+/** Height of the ceiling for rooms that have one, or null for open-top rooms. */
+export function enclosedHeight(id: EnvironmentId): number | null {
+  return ENCLOSED[id] ? WALL_HEIGHT[id] : null;
+}
+
+const WALL_HEIGHT: Record<EnvironmentId, number> = { library: 2.6, cafe: 1.3, office: 1.3, park: 0.45 };
+const ENCLOSED: Partial<Record<EnvironmentId, true>> = { library: true };
 const MAX_POINT_LIGHTS = 4;
+const CEILING_LAMP_SCALE = 0.55;
 
 export interface SceneContext {
   env: EnvironmentDef;
   scene: THREE.Scene;
   root: THREE.Group;
   quality: Quality;
-  /** Hanging lamp with a glowing shade and a warm point light. */
+  /** Hanging chandelier with a warm point light. */
   addPendantLamp(x: number, z: number, height: number, color: string): void;
 }
 
@@ -86,6 +93,13 @@ export async function buildEnvironment(
     wall.receiveShadow = shadows;
     root.add(wall);
   }
+  if (ENCLOSED[env.id]) {
+    const ceiling = new THREE.Mesh(new THREE.PlaneGeometry(width, depth), material(theme.wall, 0.95));
+    ceiling.rotation.x = Math.PI / 2;
+    ceiling.position.set(cx, wallHeight, cz);
+    ceiling.receiveShadow = shadows;
+    root.add(ceiling);
+  }
 
   const hemi = new THREE.HemisphereLight(theme.sky, theme.ground, 0.55);
   const ambient = new THREE.AmbientLight(theme.ambient, theme.ambientIntensity);
@@ -108,24 +122,19 @@ export async function buildEnvironment(
   }
 
   let pointLights = 0;
+  const lampLoads: Promise<unknown>[] = [];
   const ctx: SceneContext = {
     env,
     scene,
     root,
     quality,
     addPendantLamp(x, z, height, color) {
-      const cord = new THREE.Mesh(new THREE.CylinderGeometry(0.01, 0.01, height, 6), material('#222', 0.6));
-      cord.position.set(x, height / 2 + wallHeight, z);
-      const shade = new THREE.Mesh(
-        new THREE.ConeGeometry(0.22, 0.2, 16, 1, true),
-        new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 0.9, side: THREE.DoubleSide }),
-      );
-      shade.position.set(x, wallHeight + height, z);
-      root.add(cord, shade);
+      const anchorY = wallHeight + height;
+      lampLoads.push(placeCeilingLamp(x, anchorY, z, root));
       if (pointLights < MAX_POINT_LIGHTS) {
         pointLights += 1;
         const light = new THREE.PointLight(color, 1.2, 7, 1.6);
-        light.position.set(x, wallHeight + height - 0.25, z);
+        light.position.set(x, anchorY - 0.3, z);
         root.add(light);
       }
     },
@@ -138,6 +147,7 @@ export async function buildEnvironment(
   }
   await Promise.all(decorations);
   await module.decorate(ctx);
+  await Promise.all(lampLoads);
 
   const seats = new SeatMarkers(env);
   root.add(seats.group);
@@ -161,10 +171,19 @@ function placeDecor(decor: DecorDef, root: THREE.Group, quality: Quality): Promi
     root.add(group);
     return Promise.resolve();
   }
-  return placeFurniture(decor.model, decor.x, decor.z, decor.yaw, root, quality);
+  return placeFurniture(decor.model, decor.x, decor.z, decor.yaw, root, quality, decor.scale ?? 1);
 }
 
-/** Loads a Kenney model and centres its footprint on (x, z) with its base on the floor. */
+/** Places a chandelier whose origin is its attachment point, so it hangs below y. */
+async function placeCeilingLamp(x: number, y: number, z: number, root: THREE.Group): Promise<void> {
+  const gltf = await loadGltf(furnitureUrl('lightCeiling'));
+  const model = gltf.scene.clone(true);
+  model.scale.setScalar(CEILING_LAMP_SCALE);
+  model.position.set(x, y, z);
+  root.add(model);
+}
+
+/** Loads a furniture model and centres its footprint on (x, z) with its base on the floor. */
 async function placeFurniture(
   name: string,
   x: number,
@@ -172,9 +191,12 @@ async function placeFurniture(
   yawDeg: number,
   root: THREE.Group,
   quality: Quality,
+  scale = 1,
 ): Promise<void> {
   const gltf = await loadGltf(furnitureUrl(name));
   const model = gltf.scene.clone(true);
+  model.scale.setScalar(scale);
+  model.updateMatrixWorld(true);
   const box = new THREE.Box3().setFromObject(model);
   const center = box.getCenter(new THREE.Vector3());
   model.position.set(-center.x, -box.min.y, -center.z);
@@ -215,6 +237,18 @@ function buildProcedural(kind: string, decor: DecorDef, quality: Quality): THREE
       for (const sx of [-1, 1]) {
         for (const sz of [-1, 1]) {
           add(new THREE.BoxGeometry(0.07, 0.37, 0.07), '#5c3d22', sx * legX, 0.185, sz * legZ);
+        }
+      }
+      break;
+    }
+    case 'desk': {
+      const topY = 0.37;
+      add(new THREE.BoxGeometry(w, 0.04, d), '#9b6b3f', 0, topY, 0);
+      const legX = w / 2 - 0.06;
+      const legZ = d / 2 - 0.06;
+      for (const sx of [-1, 1]) {
+        for (const sz of [-1, 1]) {
+          add(new THREE.BoxGeometry(0.05, topY, 0.05), '#5c3d22', sx * legX, topY / 2, sz * legZ);
         }
       }
       break;

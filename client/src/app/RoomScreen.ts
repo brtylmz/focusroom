@@ -30,7 +30,7 @@ import {
 import { Avatar } from '../entities/avatar.js';
 import { loadAllCharacterTemplates, type CharacterTemplate } from '../entities/characterTemplate.js';
 import { RemotePlayer } from '../entities/remotePlayer.js';
-import { buildEnvironment, type BuiltEnvironment, type Quality } from '../scenes/common.js';
+import { buildEnvironment, enclosedHeight, type BuiltEnvironment, type Quality } from '../scenes/common.js';
 import { loadSceneModule } from '../scenes/index.js';
 import { playChime } from '../systems/audio.js';
 import { CameraRig } from '../systems/cameraRig.js';
@@ -222,6 +222,7 @@ export class RoomScreen {
         return;
       }
       this.built = built;
+      this.rig.setEnclosure(this.env.bounds, enclosedHeight(this.env.id));
       this.templates = new Map(templates.map((t): [CharacterId, CharacterTemplate] => [t.id, t]));
 
       const template = this.templates.get(this.deps.profile.characterId);
@@ -258,6 +259,7 @@ export class RoomScreen {
     cancelAnimationFrame(this.raf);
     this.resizeObserver?.disconnect();
     this.detachKeys?.();
+    if (this.isPointerLocked()) document.exitPointerLock();
     this.flushFocus();
     if (this.socket) {
       this.socket.emit('oda:ayrıl', () => undefined);
@@ -548,15 +550,24 @@ export class RoomScreen {
     let press: { id: number; x: number; y: number; moved: boolean } | null = null;
 
     this.canvas.addEventListener('pointerdown', (event) => {
+      if (this.isPointerLocked()) {
+        if (event.button === 2) document.exitPointerLock();
+        return;
+      }
       press = { id: event.pointerId, x: event.clientX, y: event.clientY, moved: false };
       this.canvas.setPointerCapture(event.pointerId);
+      if (!this.touchDevice) this.canvas.requestPointerLock()?.catch(() => undefined);
     });
     this.canvas.addEventListener('pointermove', (event) => {
+      if (this.isPointerLocked()) {
+        this.rig.orbit(event.movementX, event.movementY);
+        return;
+      }
       if (!press || press.id !== event.pointerId) return;
       if (!press.moved && Math.hypot(event.clientX - press.x, event.clientY - press.y) > DRAG_THRESHOLD_PX) {
         press.moved = true;
       }
-      if (press.moved) this.rig.orbit(event.movementX, event.movementY);
+      if (press.moved && this.touchDevice) this.rig.orbit(event.movementX, event.movementY);
     });
     const release = (event: PointerEvent): void => {
       if (!press || press.id !== event.pointerId) return;
@@ -575,6 +586,10 @@ export class RoomScreen {
       { passive: false },
     );
     this.canvas.addEventListener('contextmenu', (event) => event.preventDefault());
+  }
+
+  private isPointerLocked(): boolean {
+    return document.pointerLockElement === this.canvas;
   }
 
   private handleClick(event: PointerEvent): void {
